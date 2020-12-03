@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Consoles world</title>
+    <link rel="stylesheet" href="/mainPage.css">
+    <link rel="stylesheet" href="/common-controls.css">
+</head>
+<body>
+<div th:replace="common-controls.html::logo"></div>
+<div th:replace="common-controls.html::menu"></div>
+<div th:replace="common-controls.html::message"></div>
+
+<div class="search-form-div">
+    <fieldset>
+        <legend>Znajdź produkt</legend>
+        <form class="standard-form" method="post" action="/search">
+            <input type="text" placeholder="Nazwa lub kod produktu" name="searchKeyword"
+                   th:value="${sessionObject.searchKeyword}">
+            <input type="submit" value="Szukaj">
+        </form>
+    </fieldset>
+</div>
+<div class="content">
+    <th:block th:each="product : ${products}">
+        <div class="product">
+            <table>
+                <tbody>
+                <tr class="firstRow">
+                    <td  class="name" th:text="${product.name}"></td>
+                    <td>
+                        <a th:if="${sessionObject.isMaster()}" th:href="@{/edit-product(code=${product.manufacturerCode})}" class="edit-button-link">Edytuj</a>
+                    </td>
+                </tr>
+                <tr class="secondRow">
+                    <td class="id" th:text="'Kod produktu: '+${product.manufacturerCode}"></td>
+                    <td class="brand" th:text="'Producent: '+${product.brand}"></td>
+                    <td rowspan="2"><a th:if="${sessionObject.isCustomer()}" class="buy" th:href="@{/buy(manufacturerCode=${product.manufacturerCode})}"></a></td>
+                </tr>
+                <tr class="thirdRow">
+                    <td class="pieces" th:text="'Ilość: '+${product.pieces}"></td>
+                    <td class="price" th:text="'Cena: '+${#numbers.formatCurrency(product.price)}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </th:block>
+</div>
+</body>
+</html>

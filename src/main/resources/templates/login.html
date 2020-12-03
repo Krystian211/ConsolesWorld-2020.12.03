@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Consoles world</title>
+    <link rel="stylesheet" href="/common-controls.css">
+</head>
+<body>
+<div th:replace="common-controls.html::logo"></div>
+<div th:replace="common-controls.html::menu"></div>
+<div th:replace="common-controls.html::message"></div>
+<div class="standard-form-div">
+    <fieldset>
+        <legend>Logowanie</legend>
+        <form class="standard-form" method="post">
+            <input type="text" placeholder="login" th:field="${loginData.login}">
+            <input type="password" placeholder="hasło" th:field="*{loginData.password}">
+            <input type="submit" value="Zaloguj">
+        </form>
+    </fieldset>
+</div>
+</body>
+</html>

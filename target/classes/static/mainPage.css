@@ -1,0 +1,91 @@
+.search-form-div{
+    width: 40%;
+    height: 25%;
+    margin: 3% auto 3% auto;
+}
+
+.content{
+    height:100%;
+    width:55%;
+    margin:0 auto;
+}
+
+.product{
+    border: solid #bd1c1c 5px;
+    padding:1%;
+    margin:1% auto;
+    height:25%;
+}
+
+.content table{
+    width:100%;
+    height:100%;
+}
+
+.firstRow{
+    height:30%;
+}
+
+.content table td{
+    padding:1%;
+}
+
+.secondRow{
+    height:10%;
+}
+
+.thirdRow{
+    height:10%;
+}
+
+.brand{
+    font-size:150%;
+    width:35%;
+}
+
+.name{
+    font-size:200%;
+    width:50%;
+}
+
+.id{
+    font-size:125%;
+}
+
+.pieces,
+.price{
+    font-size:125%;
+}
+
+.buy{
+    background-image: url("/images/buy.png");
+    display: block;
+    width:50%;
+    height:60%;
+    background-size:100%;
+    float: right;
+    margin: auto 10%;
+}
+
+.edit-button-link{
+    background-color:#219e43;
+    color: white;
+    font-size:100%;
+    text-decoration: none;
+    padding: 0.5em 0.75em;
+    transition: background-color 0.5s;
+    border: solid #082759 2px;
+}
+
+.edit-button-link:hover{
+    background: #bd1c1c;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/common-controls.css">
+</head>
+<body>
+    <img src="/images/logo.png" alt="logo" class="logo" th:fragment="logo">
+
+    <div class="menu" th:fragment="menu">
+        <a href="/main">Strona główna</a>
+        <a href="/main?category=consoles">Konsole</a>
+        <a href="/main?category=controllers">Kontrolery</a>
+        <a href="/main?category=accessories">Akcesoria</a>
+        <a href="/contact">Kontakt</a>
+        <a th:if="!${sessionObject.isLogged()}" href="/login">Zaloguj</a>
+        <a th:unless="!${sessionObject.isLogged()}" href="/edit-account">Konto</a>
+        <a th:if="${sessionObject.isMaster()}" href="/add-product">Dodaj produkt</a>
+        <a th:if="${sessionObject.isCustomer()}" href="/basket">Koszyk</a>
+        <a th:unless="!${sessionObject.isLogged()}" href="/logout">Wyloguj</a>
+        <a th:if="!${sessionObject.isLogged()}" href="/register">Zarejestruj</a>
+    </div>
+
+    <div th:if="${sessionObject.isMessageAvailable()}" class="message" th:fragment="message">
+        <fieldset>
+            <legend>Uwaga</legend>
+            <th:block th:each="message : ${sessionObject.getAllMessages()}">
+                <div class="warning" th:text="${message}"></div>
+            </th:block>
+        </fieldset>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+.basket-div{
+    text-align:center;
+    margin:1% auto;
+    width:60%;
+    min-height:10%;
+    font-size:110%;
+}
+.basket-div table{
+    border-collapse: collapse;
+    border-style:hidden;
+    width:100%;
+}
+
+table td{
+    border: solid gray 3px;
+}
+
+table .name{
+    width:50%;
+}
+
+table .pieces{
+    width:10%;
+}
+
+table .price-per-piece{
+    width:20%;
+}
+
+table .total-price{
+    font-size:110%;
+    font-weight:bold;
+}
+
+table .total-product-price{
+    width:20%;
+}
+
+.basket-div table{
+    text-align:center;
+    margin:1% auto;
+}
+.basket-div th{
+    font-size:110%;
+}

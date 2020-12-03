@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Consoles world</title>
+    <link rel="stylesheet" href="/common-controls.css">
+    <script src="validators.js"></script>
+</head>
+<body>
+<div th:replace="common-controls.html::logo"></div>
+<div th:replace="common-controls.html::menu"></div>
+<div th:replace="common-controls.html::message"></div>
+<div class="standard-form-div">
+    <fieldset>
+        <legend>Edytuj produkt</legend>
+        <form class="standard-form" method="post" name="add-new-product-form" onsubmit="return validateProductData()">
+            <input type="text" placeholder="nazwa" th:field="${productData.name}" name="name">
+            <input type="text" placeholder="producent" th:field="${productData.brand}" name="brand">
+            <input type="text" placeholder="kod producenta" th:field="${productData.manufacturerCode}" name="manufacturerCode">
+            <input type="number" placeholder="cena" th:field="${productData.price}" step="0.01" name="price">
+            <label for="pieces">Sztuk:</label>
+            <input type="number" placeholder="ilość" th:field="${productData.pieces}" id="pieces" name="pieces">
+            <label for="category">Kategoria produktu:</label>
+            <select th:field="${productData.category}" id="category" name="category">
+                <option value="CONSOLES">Konsole</option>
+                <option value="CONTROLLERS">Kontrolery</option>
+                <option value="ACCESSORIES">Akcesoria</option>
+            </select>
+            <input type="submit" value="Akceptuj">
+        </form>
+    </fieldset>
+</div>
+</body>
+</html>

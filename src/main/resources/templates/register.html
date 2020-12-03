@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Consoles world</title>
+    <link rel="stylesheet" href="/common-controls.css">
+    <script src="validators.js"></script>
+</head>
+<body>
+<div th:replace="common-controls.html::logo"></div>
+<div th:replace="common-controls.html::menu"></div>
+<div th:replace="common-controls.html::message"></div>
+<div class="standard-form-div">
+    <fieldset>
+        <legend>Rejestracja</legend>
+        <form class="standard-form" method="post" name="register-form" onsubmit="return validateRegisterData()">
+            <input type="text" placeholder="login" th:field="${registrationData.login}" name="login">
+            <input type="text" placeholder="imię" th:field="${registrationData.firstName}"name="firstName">
+            <input type="text" placeholder="nazwisko" th:field="${registrationData.lastName}"name="lastName">
+            <input type="text" placeholder="email" th:field="${registrationData.email}"name="email">
+            <input type="password" placeholder="hasło - min. 8 znaków" th:field="*{registrationData.password}" name="password">
+            <input type="password" placeholder="powtórz hasło" th:field="*{registrationData.repeatedPassword}" name="repeatedPassword">
+            <input type="submit" value="Zarejestruj">
+        </form>
+    </fieldset>
+</div>
+</body>
+</html>
