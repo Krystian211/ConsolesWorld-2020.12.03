@@ -1,8 +1,8 @@
 Default accounts
 User:
-login: krystian
-password: krystian123
+login: customer
+password: customer
 
 Master:
 login: admin
-password: admin123
+password: admin

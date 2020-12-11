@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Consoles world</title>
     <link rel="stylesheet" href="/common-controls.css">
+    <script src="validators.js"></script>
 </head>
 <body>
 <div th:replace="common-controls.html::logo"></div>
@@ -12,9 +13,9 @@
 <div class="standard-form-div">
     <fieldset>
         <legend>Logowanie</legend>
-        <form class="standard-form" method="post">
-            <input type="text" placeholder="login" th:field="${loginData.login}">
-            <input type="password" placeholder="hasło" th:field="*{loginData.password}">
+        <form class="standard-form" method="post" name="login-form" onsubmit="return validateLoginData()">
+            <input type="text" placeholder="login" th:field="${userLoginData.login}" name="login">
+            <input type="password" placeholder="hasło" th:field="*{userLoginData.password}" name="password">
             <input type="submit" value="Zaloguj">
         </form>
     </fieldset>

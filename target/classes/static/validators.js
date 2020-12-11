@@ -15,6 +15,7 @@ function validateRegisterData(){
     var emailRegex=new RegExp(/.+@[a-zA-Z0-9]{2,}\.[a-zA-Z]{2,3}/);
 
     var flag=true;
+
     if(!loginRegex.test(login)){
         document.forms["register-form"]["login"].style.background="#f5aeae";
         flag=false;
@@ -58,7 +59,7 @@ function validateRegisterData(){
 function validateEditAccountData(){
 
     var login=document.forms["edit-account-form"]["login"].value;
-    var oldPassword=document.forms["edit-account-form"]["oldPassword"].value;
+    var currentPassword=document.forms["edit-account-form"]["currentPassword"].value;
     var newPassword=document.forms["edit-account-form"]["newPassword"].value;
     var repeatedNewPassword=document.forms["edit-account-form"]["repeatedNewPassword"].value;
     var firstName=document.forms["edit-account-form"]["firstName"].value;
@@ -72,6 +73,7 @@ function validateEditAccountData(){
     var emailRegex=new RegExp(/.+@[a-zA-Z0-9]{2,}\.[a-zA-Z]{2,3}/);
 
     var flag=true;
+
     if(!loginRegex.test(login)){
         document.forms["edit-account-form"]["login"].style.background="#f5aeae";
         flag=false;
@@ -96,11 +98,11 @@ function validateEditAccountData(){
     }else{
         document.forms["edit-account-form"]["email"].style.background="white";
     }
-    if(!passwordRegex.test(oldPassword)){
-        document.forms["edit-account-form"]["oldPassword"].style.background="#f5aeae";
+    if(!passwordRegex.test(currentPassword)){
+        document.forms["edit-account-form"]["currentPassword"].style.background="#f5aeae";
         flag=false;
     }else{
-        document.forms["edit-account-form"]["oldPassword"].style.background="white";
+        document.forms["edit-account-form"]["currentPassword"].style.background="white";
     }
     if(!((newPassword=="")&&(repeatedNewPassword==""))){
         if(!passwordRegex.test(newPassword)){
@@ -127,12 +129,15 @@ function validateProductData(){
     var name=document.forms["add-new-product-form"]["name"].value;
     var brand=document.forms["add-new-product-form"]["brand"].value;
     var manufacturerCode=document.forms["add-new-product-form"]["manufacturerCode"].value;
+    var pieces=document.forms["add-new-product-form"]["pieces"].value;
+    var price=document.forms["add-new-product-form"]["price"].value;
 
     var nameRegex=new RegExp(/[A-ZĄĆĘŁŃÓŚŻŹ]+.+/);
     var brandRegex=new RegExp(/[A-ZĄĆĘŁŃÓŚŻŹ]+.+/);
     var manufacturerCodeRegex=new RegExp(/.{3,}/);
 
     var flag=true;
+
     if(!nameRegex.test(name)){
         document.forms["add-new-product-form"]["name"].style.background="#f5aeae";
         flag=false;
@@ -151,5 +156,39 @@ function validateProductData(){
     }else{
         document.forms["add-new-product-form"]["manufacturerCode"].style.background="white";
     }
+    if(pieces<=0){
+        document.forms["add-new-product-form"]["pieces"].style.background="#f5aeae";
+        flag=false;
+    }else{
+        document.forms["add-new-product-form"]["pieces"].style.background="white";
+    }
+    if(price<=0){
+        document.forms["add-new-product-form"]["price"].style.background="#f5aeae";
+        flag=false;
+    }else{
+        document.forms["add-new-product-form"]["price"].style.background="white";
+    }
+    return flag;
+}
+
+function validateLoginData(){
+    var login=document.forms["login-form"]["login"].value;
+    var password=document.forms["login-form"]["password"].value;
+
+    var flag=true;
+
+    if(login==""){
+        document.forms["login-form"]["login"].style.background="#f5aeae";
+        flag=false;
+    }else{
+        document.forms["login-form"]["login"].style.background="white";
+    }
+    if(password==""){
+        document.forms["login-form"]["password"].style.background="#f5aeae";
+        flag=false;
+    }else{
+        document.forms["login-form"]["password"].style.background="white";
+    }
+
     return flag;
 }

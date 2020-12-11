@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import pl.camp.it.consoles.world.database.IProductRepository;
+import pl.camp.it.consoles.world.services.IProductService;
 import pl.camp.it.consoles.world.session.SessionObject;
 
 import javax.annotation.Resource;
@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 public class CommonController {
 
     @Autowired
-    IProductRepository productRepository;
+    IProductService productService;
 
     @Resource
     SessionObject sessionObject;
@@ -28,8 +28,7 @@ public class CommonController {
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String showProductsByCategory(Model model,
                                          @RequestParam(defaultValue = "all") String category) {
-        model.addAttribute("products", productRepository.getProductByCategoryAndNameOrCode(category,
-                sessionObject.getSearchKeyword()));
+        model.addAttribute("products", this.productService.getProductsByCategoryAndKeyword(category,this.sessionObject.getSearchKeyword()));
         model.addAttribute("sessionObject", this.sessionObject);
         return "mainPage";
     }

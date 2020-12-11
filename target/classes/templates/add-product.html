@@ -15,14 +15,14 @@
     <fieldset>
         <legend>Dodaj produkt</legend>
         <form class="standard-form" method="post" name="add-new-product-form" onsubmit="return validateProductData()">
-            <input type="text" placeholder="nazwa" th:field="${product.name}" name="name">
-            <input type="text" placeholder="producent" th:field="${product.brand}" name="brand">
-            <input type="text" placeholder="kod producenta" th:field="${product.manufacturerCode}" name="manufacturerCode">
-            <input type="number" placeholder="cena" th:field="${product.price}" step="0.01" name="price">
+            <input type="text" placeholder="nazwa" th:field="${productData.name}" name="name">
+            <input type="text" placeholder="producent" th:field="${productData.brand}" name="brand">
+            <input type="text" placeholder="kod producenta" th:field="${productData.manufacturerCode}" name="manufacturerCode">
+            <input type="number" placeholder="cena" th:field="${productData.price}" step="0.01" name="price">
             <label for="pieces">Sztuk:</label>
-            <input type="number" placeholder="ilość" th:field="${product.pieces}" id="pieces" name="pieces">
+            <input type="number" placeholder="ilość" th:field="${productData.pieces}" id="pieces" name="pieces">
             <label for="category">Kategoria produktu:</label>
-            <select th:field="${product.category}" id="category" name="category">
+            <select th:field="${productData.category}" id="category" name="category">
                 <option value="CONSOLES">Konsole</option>
                 <option value="CONTROLLERS">Kontrolery</option>
                 <option value="ACCESSORIES">Akcesoria</option>

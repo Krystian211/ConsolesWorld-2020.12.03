@@ -24,13 +24,13 @@
                     <td class="name" th:text="${product.name}"></td>
                     <td class="pieces" th:text="${product.pieces}"></td>
                     <td class="price-per-piece" th:text="${#numbers.formatCurrency(product.price)}"></td>
-                    <td class="total-product-price" th:text="${#numbers.formatCurrency(sessionObject.getTotalProductPrice(product))}"></td>
+                    <td class="total-product-price" th:text="${#numbers.formatCurrency(product.price*product.pieces)}"></td>
                 </tr>
             </th:block>
             <tr>
                 <td colspan="2"></td>
                 <td class="total-price price-per-piece">Suma</td>
-                <td class="total-product-price" th:text="${#numbers.formatCurrency(sessionObject.getTotalPrice())}"></td>
+                <td class="total-product-price" th:text="${#numbers.formatCurrency(sessionObject.overallPrice)}"></td>
             </tr>
         </tbody>
 

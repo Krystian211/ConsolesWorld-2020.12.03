@@ -29,13 +29,13 @@
                 <tr class="firstRow">
                     <td  class="name" th:text="${product.name}"></td>
                     <td>
-                        <a th:if="${sessionObject.isMaster()}" th:href="@{/edit-product(code=${product.manufacturerCode})}" class="edit-button-link">Edytuj</a>
+                        <a th:if="${sessionObject.isMaster()}" th:href="@{/edit-product(productId=${product.id})}" class="edit-button-link">Edytuj</a>
                     </td>
                 </tr>
                 <tr class="secondRow">
                     <td class="id" th:text="'Kod produktu: '+${product.manufacturerCode}"></td>
                     <td class="brand" th:text="'Producent: '+${product.brand}"></td>
-                    <td rowspan="2"><a th:if="${sessionObject.isCustomer()}" class="buy" th:href="@{/buy(manufacturerCode=${product.manufacturerCode})}"></a></td>
+                    <td rowspan="2"><a th:if="${sessionObject.isCustomer()}" class="buy" th:href="@{/buy(productId=${product.id})}"></a></td>
                 </tr>
                 <tr class="thirdRow">
                     <td class="pieces" th:text="'Ilość: '+${product.pieces}"></td>

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 import pl.camp.it.consoles.world.model.Product;
 import pl.camp.it.consoles.world.model.User;
-import pl.camp.it.consoles.world.model.view.InitialFormData;
+import pl.camp.it.consoles.world.model.view.InitialUserRegistrationFormData;
 
 
 import java.math.BigDecimal;
@@ -17,47 +17,37 @@ public class SessionObject {
     private User loggedUser =null;
     private String searchKeyword=null;
     private List<String> messageList=new ArrayList<>();
-    private InitialFormData initialFormData=new InitialFormData();
+    private InitialUserRegistrationFormData initialUserRegistrationFormData =new InitialUserRegistrationFormData();
     private Product productData=new Product();
     private List<Product> basket=new ArrayList<>();
-
-    public List<Product> getBasket() {
-        return basket;
-    }
+    private BigDecimal overallPrice;
 
     public BigDecimal getTotalProductPrice(Product basketProduct){
         return basketProduct.getPrice().multiply(BigDecimal.valueOf(basketProduct.getPieces()));
     }
 
-    public BigDecimal getTotalPrice(){
-        BigDecimal totalPrice=BigDecimal.valueOf(0);
-        for (Product product : basket) {
-            totalPrice=totalPrice.add(getTotalProductPrice(product));
-        }
-        return totalPrice;
+    public BigDecimal getOverallPrice() {
+        return overallPrice;
+    }
+
+    public void setOverallPrice(BigDecimal overallPrice) {
+        this.overallPrice = overallPrice;
+    }
+
+    public List<Product> getBasket() {
+        return basket;
     }
 
     public void setBasket(List<Product> basket) {
         this.basket = basket;
     }
 
-    public void buyProduct(Product product){
-        for (Product basketProduct : basket) {
-            if (basketProduct.getManufacturerCode().equals(product.getManufacturerCode())) {
-                basketProduct.setPieces(basketProduct.getPieces()+1);
-                return;
-            }
-        }
-        Product basketProduct=new Product(product);
-        basketProduct.setPieces(1);
-        basket.add(basketProduct);
-    }
-
     public Product getProductData() {
         return productData;
     }
+
     public Product pollProductData(){
-        Product product=new Product(this.productData);
+        Product product=(Product) this.productData.clone();
         this.productData.setName(null);
         this.productData.setBrand(null);
         this.productData.setCategory(null);
@@ -71,18 +61,18 @@ public class SessionObject {
         this.productData = productData;
     }
 
-    public InitialFormData getInitialFormData() {
-        return initialFormData;
+    public InitialUserRegistrationFormData getInitialUserRegistrationFormData() {
+        return initialUserRegistrationFormData;
     }
 
-    public InitialFormData pollInitialFormData(){
-        InitialFormData initialFormData=this.initialFormData.copy();
-        this.initialFormData.clear();
-        return initialFormData;
+    public InitialUserRegistrationFormData pollInitialFormData(){
+        InitialUserRegistrationFormData initialUserRegistrationFormData =this.initialUserRegistrationFormData.copy();
+        this.initialUserRegistrationFormData.clear();
+        return initialUserRegistrationFormData;
     }
 
-    public void setInitialFormData(InitialFormData initialFormData) {
-        this.initialFormData = initialFormData;
+    public void setInitialUserRegistrationFormData(InitialUserRegistrationFormData initialUserRegistrationFormData) {
+        this.initialUserRegistrationFormData = initialUserRegistrationFormData;
     }
 
     public SessionObject() {
@@ -155,5 +145,9 @@ public class SessionObject {
         if(messages!=null){
             this.messageList.addAll(messages);
         }
+    }
+
+    public void logout(){
+        this.setLoggedUser(null);
     }
 }

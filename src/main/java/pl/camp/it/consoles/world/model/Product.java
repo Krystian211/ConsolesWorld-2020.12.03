@@ -3,6 +3,7 @@ package pl.camp.it.consoles.world.model;
 import java.math.BigDecimal;
 
 public class Product {
+    private int id;
     private String name;
     private String brand;
     private Category category;
@@ -10,7 +11,8 @@ public class Product {
     private String manufacturerCode;
     private BigDecimal price;
 
-    public Product(String name, String brand, Category category, int pieces, String manufacturerCode, BigDecimal price) {
+    public Product(int id, String name, String brand, Category category, int pieces, String manufacturerCode, BigDecimal price) {
+        this.id = id;
         this.name = name;
         this.brand = brand;
         this.category = category;
@@ -19,16 +21,15 @@ public class Product {
         this.price = price;
     }
 
-    public Product(Product product){
-        this.name = product.getName();
-        this.brand = product.getBrand();
-        this.category = product.getCategory();
-        this.pieces = product.getPieces();
-        this.manufacturerCode = product.getManufacturerCode();
-        this.price = product.getPrice();
+    public Product() {
     }
 
-    public Product() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getManufacturerCode() {
@@ -91,5 +92,10 @@ public class Product {
             }
             return null;
         }
+    }
+
+    @Override
+    public Object clone() {
+        return new Product(this.id,this.name,this.brand,this.category,this.pieces,this.manufacturerCode,this.price);
     }
 }

@@ -1,9 +1,10 @@
 package pl.camp.it.consoles.world.model;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import pl.camp.it.consoles.world.model.view.RegistrationData;
+import pl.camp.it.consoles.world.model.view.UserRegistrationData;
 
 public class User {
+    private int id;
     private String login;
     private String password;
     private String firstName;
@@ -11,7 +12,8 @@ public class User {
     private String email;
     private boolean master;
 
-    public User(String login, String password, String firstName, String lastName, String email, boolean master) {
+    public User(int id, String login, String password, String firstName, String lastName, String email, boolean master) {
+        this.id = id;
         this.login = login;
         this.password = password;
         this.firstName = firstName;
@@ -20,16 +22,15 @@ public class User {
         this.master = master;
     }
 
-    public User(RegistrationData registrationData) {
-        this.login = registrationData.getLogin();
-        this.password = DigestUtils.md5Hex(registrationData.getPassword());
-        this.firstName = registrationData.getFirstName();
-        this.lastName = registrationData.getLastName();
-        this.email = registrationData.getEmail();
-        this.master = registrationData.getIsMaster();
+    public User() {
     }
 
-    public User() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public boolean isMaster() {
@@ -54,6 +55,10 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void hashAndSetPassword(String password){
+        this.password=DigestUtils.md5Hex(password);
     }
 
     public String getFirstName() {

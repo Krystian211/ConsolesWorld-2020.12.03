@@ -14,13 +14,13 @@
     <fieldset>
         <legend>Edytuj dane konta</legend>
         <form class="standard-form" method="post" onsubmit="return validateEditAccountData()" name="edit-account-form">
-            <input type="text" placeholder="login" th:field="${editAccountData.login}" name="login">
-            <input type="text" placeholder="imię" th:field="${editAccountData.firstName}" name="firsName">
-            <input type="text" placeholder="nazwisko" th:field="${editAccountData.lastName}" name="lastName">
-            <input type="text" placeholder="email" th:field="${editAccountData.email}" name="email">
-            <input type="password" placeholder="stare hasło" th:field="*{editAccountData.oldPassword}" name="oldPassword">
-            <input type="password" placeholder="nowe hasło - min. 8 znaków" th:field="*{editAccountData.newPassword}" name="newPassword">
-            <input type="password" placeholder="powtórz hasło" th:field="*{editAccountData.repeatedNewPassword}" name="repeatedNewPassword">
+            <input type="text" placeholder="login" th:field="${editUserAccountData.login}" name="login">
+            <input type="text" placeholder="imię" th:field="${editUserAccountData.firstName}" name="firsName">
+            <input type="text" placeholder="nazwisko" th:field="${editUserAccountData.lastName}" name="lastName">
+            <input type="text" placeholder="email" th:field="${editUserAccountData.email}" name="email">
+            <input type="password" placeholder="aktualne hasło" th:field="*{editUserAccountData.currentPassword}" name="currentPassword">
+            <input type="password" placeholder="nowe hasło - min. 8 znaków" th:field="*{editUserAccountData.newPassword}" name="newPassword">
+            <input type="password" placeholder="powtórz hasło" th:field="*{editUserAccountData.repeatedNewPassword}" name="repeatedNewPassword">
             <input type="submit" value="Akceptuj">
         </form>
     </fieldset>
