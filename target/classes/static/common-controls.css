@@ -20,7 +20,7 @@ body{
 .menu a{
     text-decoration: none;
     color: white;
-    font-size: 125%;
+    font-size: 120%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition: color 0.5s;
     margin: 0;

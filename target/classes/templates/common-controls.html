@@ -20,6 +20,7 @@
         <a th:if="${sessionObject.isCustomer()}" href="/basket">Koszyk</a>
         <a th:unless="!${sessionObject.isLogged()}" href="/logout">Wyloguj</a>
         <a th:if="!${sessionObject.isLogged()}" href="/register">Zarejestruj</a>
+        <a th:if="${sessionObject.isCustomer()}" href="/orders">Zamówienia</a>
     </div>
 
     <div th:if="${sessionObject.isMessageAvailable()}" class="message" th:fragment="message">

@@ -1,0 +1,48 @@
+.orders{
+    width: 50%;
+    padding:1%;
+    margin:1% auto;
+    font-size:110%;
+    text-align: left;
+}
+
+.order{
+    border: solid #bd1c1c 5px;
+    padding:1%;
+    margin:1% auto;
+    cursor: pointer;
+    transition: background 0.5s;
+}
+
+.order:hover{
+    cursor: pointer;
+    background: rgba(2, 2, 89, 0.3);
+}
+
+table{
+    margin-left: 4%;
+    width:100%;
+    display: none;
+}
+
+.overall-order-price{
+    font-weight: bold;
+}
+
+.name{
+    width: 45%
+}
+
+.pieces{
+    width: 15%
+}
+
+.price-per-piece{
+    width: 20%
+}
+
+.total-product-price{
+    width: 20%
+}
+
+

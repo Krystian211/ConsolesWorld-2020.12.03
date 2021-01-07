@@ -13,28 +13,34 @@
 <div class="basket-div">
     <table>
         <thead>
-            <th class="name">Nazwa produktu</th>
-            <th class="pieces">Ilość</th>
-            <th class="price-per-piece">Cena/szt.</th>
-            <th class="total-product-price">Cena łącznie</th>
+        <th class="name">Nazwa produktu</th>
+        <th class="pieces">Ilość</th>
+        <th class="price-per-piece">Cena/szt.</th>
+        <th class="total-product-price">Cena łącznie</th>
+        <th class="remove-button-td"></th>
         </thead>
         <tbody>
-            <th:block th:each="product : ${sessionObject.basket}">
-                <tr>
-                    <td class="name" th:text="${product.name}"></td>
-                    <td class="pieces" th:text="${product.pieces}"></td>
-                    <td class="price-per-piece" th:text="${#numbers.formatCurrency(product.price)}"></td>
-                    <td class="total-product-price" th:text="${#numbers.formatCurrency(product.price*product.pieces)}"></td>
-                </tr>
-            </th:block>
+        <th:block th:each="product : ${sessionObject.basket}">
             <tr>
-                <td colspan="2"></td>
-                <td class="total-price price-per-piece">Suma</td>
-                <td class="total-product-price" th:text="${#numbers.formatCurrency(sessionObject.overallPrice)}"></td>
+                <td class="name" th:text="${product.name}"></td>
+                <td class="pieces" th:text="${product.pieces}"></td>
+                <td class="price-per-piece" th:text="${#numbers.formatCurrency(product.price)}"></td>
+                <td class="total-product-price" th:text="${#numbers.formatCurrency(product.price*product.pieces)}"></td>
+                <td class="remove-button-td"><a class="remove-button-link" th:href="@{/remove-from-basket(productId=${product.id})}">Usuń</a></td>
             </tr>
+        </th:block>
+        <tr>
+            <td colspan="2"></td>
+            <td class="total-price price-per-piece">Suma:</td>
+            <td class="total-product-price" th:text="${#numbers.formatCurrency(sessionObject.overallPrice)}"></td>
+        </tr>
         </tbody>
-
     </table>
+
+    <div class="confirm-button-div">
+        <a th:if="!${#lists.isEmpty(sessionObject.basket)}" href="/confirm-order" class="confirm-button-link">Potwierdź zamówienie</a>
+    </div>
+
 </div>
 
 

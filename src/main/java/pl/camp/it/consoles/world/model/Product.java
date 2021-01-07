@@ -1,11 +1,16 @@
 package pl.camp.it.consoles.world.model;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Entity(name = "tproduct")
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String brand;
+    @Enumerated(EnumType.STRING)
     private Category category;
     private int pieces;
     private String manufacturerCode;

@@ -32,12 +32,16 @@ public class BasketController {
         if(this.sessionObject.isCustomer()){
             model.addAttribute("sessionObject",this.sessionObject);
             this.sessionObject.setOverallPrice(this.basketService.calculateOverallPrice());
-            System.out.println(this.sessionObject.getOverallPrice());
             return "basket";
         }else{
             return "redirect:/main";
         }
+    }
 
+    @RequestMapping(value="/remove-from-basket",method = RequestMethod.GET)
+    public String removeFromBasket(@RequestParam int productId){
+        this.basketService.removeProductById(productId);
+        return "redirect:/basket";
     }
 }
 

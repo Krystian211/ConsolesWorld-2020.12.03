@@ -25,7 +25,7 @@ public class ProductServiceImpl implements IProductService {
         if (category.equals("all")) {
             return searchProducts(keyword,this.productDAO.getAllProducts());
         }else {
-            return searchProducts(keyword,this.productDAO.getProductsByCategory(category));
+            return searchProducts(keyword,this.productDAO.getProductsByCategory(Product.Category.toCategory(category)));
         }
     }
 

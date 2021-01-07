@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Consoles world</title>
+    <link rel="stylesheet" href="/common-controls.css">
+    <link rel="stylesheet" href="/orders.css">
+    <script src="orders.js"></script>
+
+</head>
+<body>
+<div th:replace="common-controls.html::logo"></div>
+<div th:replace="common-controls.html::menu"></div>
+<div th:replace="common-controls.html::message"></div>
+
+<div class="orders">
+    <th:block th:each="order : ${orders}">
+        <div class="order" th:onclick="|showOrderPositions('${order.id}')|" th:id="'order-id-'+${order.id}">
+            <div th:text="'Status zamówienia: ' + ${order.status}" class="order-status"></div>
+            <div class="products-label">Produkty:</div>
+            <table class="positions-table">
+                <thead>
+                <th class="name" >Nazwa produktu</th>
+                <th class="pieces variable-visibility">Ilość</th>
+                <th class="price-per-piece variable-visibility">Cena/szt.</th>
+                <th class="total-product-price variable-visibility">Cena łącznie</th>
+                </thead>
+                <tbody>
+                <th:block th:each="position : ${order.orderPositions}">
+                    <tr>
+                        <td class="name variable-visibility" th:text="${position.product.name}"></td>
+                        <td class="pieces variable-visibility" th:text="${position.pieces}"></td>
+                        <td class="price-per-piece variable-visibility" th:text="${#numbers.formatCurrency(position.product.price)}"></td>
+                        <td class="total-product-price variable-visibility"
+                            th:text="${#numbers.formatCurrency(position.overallPrice)}"></td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+            <div class="overall-order-price" th:text="'Wartość zamówienia: '+${#numbers.formatCurrency(order.overallPrice)}"></div>
+        </div>
+    </th:block>
+</div>
+
+</body>
+</html>

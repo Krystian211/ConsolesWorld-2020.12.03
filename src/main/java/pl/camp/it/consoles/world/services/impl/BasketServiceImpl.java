@@ -40,4 +40,14 @@ public class BasketServiceImpl implements IBasketService {
         }
         return price;
     }
+
+    @Override
+    public void removeProductById(int id) {
+        for (Product basketProduct : this.sessionObject.getBasket()) {
+            if (basketProduct.getId()==id) {
+                this.sessionObject.getBasket().remove(basketProduct);
+                return;
+            }
+        }
+    }
 }

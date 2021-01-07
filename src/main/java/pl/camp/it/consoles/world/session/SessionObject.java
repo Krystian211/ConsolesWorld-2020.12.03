@@ -127,12 +127,7 @@ public class SessionObject {
     }
 
     public boolean isMessageAvailable(){
-        if (messageList.size()==0) {
-            return false;
-        }
-        else {
-            return true;
-        }
+        return messageList.size() != 0;
     }
 
     public void putMessage(String message){

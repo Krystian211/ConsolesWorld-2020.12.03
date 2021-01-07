@@ -35,7 +35,10 @@
                 <tr class="secondRow">
                     <td class="id" th:text="'Kod produktu: '+${product.manufacturerCode}"></td>
                     <td class="brand" th:text="'Producent: '+${product.brand}"></td>
-                    <td rowspan="2"><a th:if="${sessionObject.isCustomer()}" class="buy" th:href="@{/buy(productId=${product.id})}"></a></td>
+                    <td rowspan="2">
+                        <a th:if="${product.pieces > 0} and ${sessionObject.isCustomer()}" class="buy" th:href="@{/buy(productId=${product.id})}"></a>
+                        <a th:if="${product.pieces <= 0} and ${sessionObject.isCustomer()}" class="buy-disabled" th:href="@{/buy(productId=${product.id})}"></a>
+                    </td>
                 </tr>
                 <tr class="thirdRow">
                     <td class="pieces" th:text="'Ilość: '+${product.pieces}"></td>
